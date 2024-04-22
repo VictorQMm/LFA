@@ -4,7 +4,7 @@ int main(){
     int estadoI;
     int qtdEstado;
     int qtdEstadoF;
-    int estadoF[];
+    int estadoF[50];
     int qtdAlfa;
     char alfa[10];
     int estadoA;
@@ -24,7 +24,7 @@ int main(){
 
 for(int i = 0; i < qtdEstadoF; i++) {                   // For usado para repetir quantas vezes  de estados finais o usuário inserir
         printf("Digite o %d estado final: \n", i + 1);
-        scanf("%d", &estadoF[]);
+        scanf("%d", &estadoF[i]);
     }
 
     printf("Quantidade simbolos no alfabrto: ");
@@ -63,34 +63,38 @@ for(int i = 0; i < qtdEstado; i++){
     }
 
 
-
     // Verificação de palavras
+
+    printf("Digite a palavra a ser verificada: ");
+        scanf("%s", palavra);
 
     estadoA = estadoI;
 
-    for (int i = 0; palavra[i] != '\0'; i++) {
-        int indice = -1;
+    // Verifico se o caractere pertence ao alfabeto
+
+    for (int i = 0; palavra[i] != '\0'; i++) {     
+        int indice = -1;                            //  -1 indice é uma maneira de falar não foi encontrada. Isso mostra q o caractere não está no alfabeto.
         for (int j = 0; j < qtdAlfa; j++) {
             if (palavra[i] == alfa[j]) {
-                indice = j;
+                indice = j;                     // para salvar o indice (caractere), em J   
                 break;
             }
         }
-        if (indice == -1) {
-            printf("Palavra contem símbolo inválido.\n");
-            return 1; // Retorna 1 para indicar erro
-        }
+
+        //Se indice ainda é -1, não esta presente no alfa.
         
-        estadoA = tabela[estadoA - 1][indice];
+        estadoA = tabela[estadoA - 1][indice];      //Atualiza o estado
     }
+
+// Faz a verificação de estado
 
     for (int i = 0; i < qtdEstadoF; i++) {
         if (estadoA == estadoF[i]) {
-            printf("Palavra aceita pelo autômato.\n");
-            return 0; // Retorna 0 para indicar sucesso
+            printf("Palavra aceita !!!!.\n");
+        }else{
+
+            printf("Palavra nao aceita ;-;.\n");
         }
     }
 
-    printf("Palavra não é aceita pelo autômato.\n");
-    return 0; // Retorna 0 para indicar sucesso
 }
