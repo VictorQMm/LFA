@@ -94,7 +94,7 @@ for(int i = 0; i < qtdEstado; i++){
         }else{
 
             printf("Palavra nao aceita ;-;.\n");
-6        }
+        }
     }
 
 }
