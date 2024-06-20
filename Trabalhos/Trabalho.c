@@ -65,7 +65,7 @@ int main() {
     estadoA = estadoI;
 
     // Verificar se o caractere pertence ao alfabeto
-    for (int i = 0; palavra[i] != '\0'; i++) {
+    for (int i = 0; palavra[i] != '\0'; i++) {  // percorre a string até encontrar um caractere nulo 
         int indice = -1;  // -1 indica que o caractere não foi encontrado no alfabeto.
         for (int j = 0; j < qtdAlfa; j++) {
             if (palavra[i] == alfa[j]) {
